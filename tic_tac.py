@@ -33,6 +33,40 @@ def Toss():
     else:
         return 'player'
 
+def ComputerMove(tiles, computerSymbol):
+    # Given a board and the computer's letter, determine where to move and return that move.
+    if computerSymbol == 'X':
+        playerSymbol = 'O'
+    else:
+        playerSymbol = 'X'
+
+ # First, check if we can win in the next move
+    for i in range(1, 10):
+        copy = tilesCopy(tiles)
+        if isSpaceFree(copy, i):
+            firstMove(copy, computerSymbol, i)
+            if isWinner(copy, computerSymbol):
+                return i
+                # Check if the player could win on their next move, and block them.
+    for i in range(1, 10):
+         copy = tilesCopy(tiles)
+         if isSpaceFree(copy, i):
+             firstMove(copy, playerSymbol, i)
+             if isWinner(copy, playerSymbol):
+                 return i
+
+
+        # Try to take one of the corners, if they are free.
+    move = chooseRandomMoveFromList(tiles, [1, 3, 7, 9])
+    if move != None:
+        return move
+    # Try to take the center space, if it is free.
+    if isSpaceFree(tiles, 5):
+        return 5
+    # if corner and center not free Move on one of the sides.
+    return chooseRandomMoveFromList(tiles, [2, 4, 6, 8])
+
+
 
 print("Start a fresh game Tic Tac Toe!")
 
