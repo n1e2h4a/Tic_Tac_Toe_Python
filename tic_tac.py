@@ -34,6 +34,17 @@ def Toss():
     else:
         return 'player'
 
+def tryoncemore():
+    # This function returns True if the player wants to play again, otherwise it returns False.
+    print('Do you want to try your luck again? (yes or no)')
+    return input().lower().startswith('y')
+
+
+def firstMove(tiles, Symbol, move):
+    tiles[move] = Symbol
+
+
+
 def isWinner(til, Sy):
     # Given a tiles and a player’s symbol, this function returns True if that player has won.
     # We use til instead of tiles and Sy instead of symbol so we don’t have to type as much.
@@ -45,6 +56,14 @@ def isWinner(til, Sy):
             (til[9] == Sy and til[6] == Sy and til[3] == Sy) or  # down the right side
             (til[7] == Sy and til[5] == Sy and til[3] == Sy) or  # diagonal
             (til[9] == Sy and til[5] == Sy and til[1] == Sy))  # diagonal
+
+
+def tilesCopy(tiles):
+    # Make a duplicate of the board list and return it the duplicate.
+    dupetiles = []
+    for i in tiles:
+        dupetiles.append(i)
+    return dupetiles
 
 
 def isSpaceFree(tiles, move):
@@ -162,5 +181,6 @@ while True:
                     break
                 else:
                     turn = 'player'
-
+    if not tryoncemore():
+          break
 
