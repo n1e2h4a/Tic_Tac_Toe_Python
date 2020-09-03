@@ -14,5 +14,14 @@ def inputPlayerSymbol():
     else:
         return ['O', 'X']
 
+
+def Toss():
+    # Randomly choose the player who will play first.
+    if random.randint(0, 1) == 0:
+        return 'computer'
+    else:
+        return 'player'
+
+
 print("Start a fresh game Tic Tac Toe!")
 
