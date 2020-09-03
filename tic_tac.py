@@ -38,6 +38,20 @@ def isSpaceFree(tiles, move):
     return tiles[move] == ' '
 
 
+def PlayerMove(tiles):
+    # Let the player type in their move.
+    move = ' '
+    while move not in '1 2 3 4 5 6 7 8 9'.split() or not isSpaceFree(tiles, int(move)):
+        try:
+            print('What is your next move? (1-9)')
+            move = input()
+            return int(move)
+
+        except ValueError:
+
+         print('That\'s not a valid number, try again.\n')
+
+
 def ComputerMove(tiles, computerSymbol):
     # Given a board and the computer's letter, determine where to move and return that move.
     if computerSymbol == 'X':
