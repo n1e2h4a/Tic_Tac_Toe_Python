@@ -111,6 +111,12 @@ def ComputerMove(tiles, computerSymbol):
     # if corner and center not free Move on one of the sides.
     return chooseRandomMoveFromList(tiles, [2, 4, 6, 8])
 
+def isBoardFull(tiles):
+    # Return True if every space on the board has been taken. Otherwise return False.
+    for i in range(1, 10):
+        if isSpaceFree(tiles, i):
+            return False
+    return True
 
 
 print("Start a fresh game Tic Tac Toe!")
