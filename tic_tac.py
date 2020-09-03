@@ -1,3 +1,4 @@
+import random
 
 def myBoard(tiles):
     # "board" is a list of 10 strings representing the board (ignore index 0)
@@ -32,6 +33,19 @@ def Toss():
         return 'computer'
     else:
         return 'player'
+
+def isWinner(til, Sy):
+    # Given a tiles and a player’s symbol, this function returns True if that player has won.
+    # We use til instead of tiles and Sy instead of symbol so we don’t have to type as much.
+    return ((til[7] == Sy and til[8] == Sy and til[9] == Sy) or  # across the top
+            (til[4] == Sy and til[5] == Sy and til[6] == Sy) or  # across the middle
+            (til[1] == Sy and til[2] == Sy and til[3] == Sy) or  # across the bottom
+            (til[7] == Sy and til[4] == Sy and til[1] == Sy) or  # down the left side
+            (til[8] == Sy and til[5] == Sy and til[2] == Sy) or  # down the middle
+            (til[9] == Sy and til[6] == Sy and til[3] == Sy) or  # down the right side
+            (til[7] == Sy and til[5] == Sy and til[3] == Sy) or  # diagonal
+            (til[9] == Sy and til[5] == Sy and til[1] == Sy))  # diagonal
+
 
 def isSpaceFree(tiles, move):
     # Return true if the passed move is free on the passed board.
