@@ -36,3 +36,46 @@ def Toss():
 
 print("Start a fresh game Tic Tac Toe!")
 
+
+while True:
+    # Reset the board
+    theBoard = [' '] * 10
+    playerSymbol, computerSymbol = inputPlayerSymbol()
+    turn = Toss()
+    print('The ' + turn + ' will play first.')
+    gameIsPlaying = True
+
+    while gameIsPlaying:
+        if turn == 'player':
+            # Player’s turn.
+            myBoard(theBoard)
+            move = PlayerMove(theBoard)
+            firstMove(theBoard, playerSymbol, move)
+            if isWinner(theBoard, playerSymbol):
+                myBoard(theBoard)
+                print('Heyyyy! You won the game!')
+                gameIsPlaying = False
+            else:
+                if isBoardFull(theBoard):
+                    myBoard(theBoard)
+                    print('no win no lose ...tie!')
+                    break
+                else:
+                    turn = 'computer'
+        else:
+            # Computer’s turn.
+            move = ComputerMove(theBoard, computerSymbol)
+            firstMove(theBoard, computerSymbol, move)
+            if isWinner(theBoard, computerSymbol):
+                myBoard(theBoard)
+                print('The computer has won the game! You lose.')
+                gameIsPlaying = False
+            else:
+                if isBoardFull(theBoard):
+                    myBoard(theBoard)
+                    print('no win no lose ...tie!')
+                    break
+                else:
+                    turn = 'player'
+
+
