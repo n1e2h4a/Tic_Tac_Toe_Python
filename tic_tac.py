@@ -65,6 +65,18 @@ def PlayerMove(tiles):
 
          print('That\'s not a valid number, try again.\n')
 
+def chooseRandomMoveFromList(tiles, movesList):
+    # Returns a valid move from the passed list on the passed tiles.
+    # Returns None if there is no valid move.
+    possibleMoves = []
+    for i in movesList:
+        if isSpaceFree(tiles, i):
+            possibleMoves.append(i)
+    if len(possibleMoves) != 0:
+        return random.choice(possibleMoves)
+    else:
+        return None
+
 
 def ComputerMove(tiles, computerSymbol):
     # Given a board and the computer's letter, determine where to move and return that move.
