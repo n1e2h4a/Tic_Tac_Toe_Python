@@ -33,6 +33,11 @@ def Toss():
     else:
         return 'player'
 
+def isSpaceFree(tiles, move):
+    # Return true if the passed move is free on the passed board.
+    return tiles[move] == ' '
+
+
 def ComputerMove(tiles, computerSymbol):
     # Given a board and the computer's letter, determine where to move and return that move.
     if computerSymbol == 'X':
